@@ -10,6 +10,8 @@ class Vertex(pygame.sprite.Sprite):
 
         self.position = pygame.Vector2(x, y)
         self.edges = [] # list of (vertex, distance_in_time)
+        self.parent = None
+        self.children = []
     
     def draw(self, screen):
         pygame.draw.circle(screen, "white", self.position, 2, width=2)
@@ -39,8 +41,9 @@ class Vertex_Factory():
                 ij_distance = vertex_list[i].position.distance_to(vertex_list[j].position)
 
                 if  ij_distance < VERTEX_MAX_LINK_DISTANCE:
-                    vertex_list[i].edges.append((vertex_list[j], ij_distance))
-                    vertex_list[j].edges.append((vertex_list[i], ij_distance))
+                    distance_factor = random.random()
+                    vertex_list[i].edges.append((vertex_list[j], ij_distance * distance_factor))
+                    vertex_list[j].edges.append((vertex_list[i], ij_distance * distance_factor))
                     edges_to_make -= 1
 
                 if edges_to_make <= 0:

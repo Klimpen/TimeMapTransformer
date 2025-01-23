@@ -1,6 +1,7 @@
 import pygame
 from constants import *
 from vertex import *
+from mst import *
 
 # create mst
 # display mst
@@ -20,7 +21,9 @@ def main():
 
     Vertex.containers = (drawable)
 
-    vertex_factory = Vertex_Factory()
+    vertexes = Vertex_Factory()
+
+    mst = MST(vertexes.vertex_list[0], vertexes.vertex_list)
 
     while True:
         for event in pygame.event.get():
