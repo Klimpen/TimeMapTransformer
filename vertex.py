@@ -10,6 +10,7 @@ class Vertex(pygame.sprite.Sprite):
 
         self.position = pygame.Vector2(x, y)
         self.edges = [] # list of (vertex, distance_in_time)
+        self.distance = None
         self.parent = None
         self.children = []
     
